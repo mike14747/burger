@@ -1,0 +1,150 @@
+<div id="errorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 id="errorModalLabel" class="modal-title">Error!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><b>These errors were found in your submission:</b></p>
+                <p id="error_div" class="text-danger"></p>
+            </div>
+            <div class="modal-footer">
+                <p>Please correct the errors and resubmit the form.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 p-4 text-center">
+        <h3>Build your Veggie Burger<span class="small">... pick a patty, a bun and toppings!</span></h3>
+        <h6 class="text-secondary">Add your own condiments / sauces at the condiment bar<span id="hidden_button">.</span></h6>
+    </div>
+</div>
+
+<div class="row border-bottom mb-4">
+    <div class="col-12">
+        <form id="order_form">
+            <div class="row m-0 p-0">
+                <div class="col-4 p-2">
+                    <h6 class="text-primary">SELECT A PATTY:</h6>
+                    <div class="form-check">
+                        <input id="patty1" class="form-check-input" type="radio" name="patty" value="1">
+                        <label class="form-check-label" for="patty1">
+                            Portobello
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="patty2" class="form-check-input" type="radio" name="patty" value="2">
+                        <label class="form-check-label" for="patty2">
+                            Black Bean
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="patty3" class="form-check-input" type="radio" name="patty" value="3">
+                        <label class="form-check-label" for="patty3">
+                            Aduki Bean
+                        </label>
+                    </div>
+                    <span id="patty_error" class="invisible text-danger"><i
+                            class="fas fa-exclamation-circle mr-2"></i>You must select a patty!</span>
+                </div>
+                <div class="col-4 p-2">
+                    <h6 class="text-primary">SELECT A BUN:</h6>
+                    <div class="form-check">
+                        <input id="bun1" class="form-check-input" type="radio" name="bun" value="1">
+                        <label class="form-check-label" for="bun1">
+                            Multigrain
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="bun2" class="form-check-input" type="radio" name="bun" value="2">
+                        <label class="form-check-label" for="bun2">
+                            Ciabatta
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="bun3" class="form-check-input" type="radio" name="bun" value="3">
+                        <label class="form-check-label" for="bun3">
+                            Kaiser
+                        </label>
+                    </div>
+                    <span id="bun_error" class="invisible text-danger"><i class="fas fa-exclamation-circle mr-2"></i>You
+                        must select a bun!</span>
+                </div>
+                <div class="col-4 p-2">
+                    <h6 class="text-primary">SELECT TOPPINGS:</h6>
+                    <div class="form-check">
+                        <input id="topping1" type="radio" class="form-check-input" name="topping" value="1">
+                        <label class="form-check-label" for="topping1">
+                            Lettuce, Tomato and Onion
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="topping2" type="radio" class="form-check-input" name="topping" value="2">
+                        <label class="form-check-label" for="topping2">
+                            Lettuce, Tomato and Avocado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="topping3" type="radio" class="form-check-input" name="topping" value="3">
+                        <label class="form-check-label" for="topping3">
+                            Tomato and Avocado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="topping4" type="radio" class="form-check-input" name="topping" value="4">
+                        <label class="form-check-label" for="topping4">
+                            Mushroom and Onion
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input id="topping5" type="radio" class="form-check-input" name="topping" value="5">
+                        <label class="form-check-label" for="topping5">
+                            None
+                        </label>
+                    </div>
+                    <span id="topping_error" class="invisible text-danger"><i
+                            class="fas fa-exclamation-circle mr-2"></i>You must select toppings!</span>
+                </div>
+            </div>
+            <div class="col-12 p-4 text-center">
+                <button id="order_burger" type="submit" class="btn btn-primary"><i class="fas fa-hamburger mr-2"></i>Order Burger</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col mx-4">
+        <h4>Burgers waiting to be eaten:</h4>
+        {{#each burgers}}
+        {{#unless devoured}}
+        <div class="row my-2 p-2 border">
+            <div class="col align-self-center">
+                {{id}}. {{patty}} burger on a {{bun}} bun with {{topping}}
+            </div>
+            <div class="col text-center align-self-center">
+                <button type="submit" class="dev-burger btn-sm btn-info my-3" value="{{id}}"><i class="fas fa-hamburger mr-2"></i>Devour Burger</button>
+            </div>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </div>
+    <div class="col mx-4">
+        <h4>Devoured burgers:</h4>
+        {{#each burgers}}
+        {{#if devoured}}
+        <div class="row my-2 p-2 border">
+            <div class="col align-self-center text-muted font-weight-lighter">
+                {{id}}. {{patty}} burger on a {{bun}} bun with {{topping}}
+            </div>
+        </div>
+        {{/if}}
+        {{/each}}
+    </div>
+</div>
