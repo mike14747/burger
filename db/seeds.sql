@@ -5,8 +5,9 @@ INSERT INTO burgers (patty_id, bun_id, topping_id) VALUES
 
 INSERT INTO patties (patty) VALUES
     ('Portobello'),
-    ('Black Bean'),
-    ('Aduki Bean');
+    ('Spicy Black Bean'),
+    ('Aduki Bean BBQ'),
+    ('Lentil/Quinoa');
 
 INSERT INTO buns (bun) VALUES
     ('Multigrain'),
