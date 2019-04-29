@@ -23,19 +23,25 @@ To use this project, you'll need to do the following:
     * run 'npm i' from the terminal (this will install the npm modules: express, mysql and express-handlebars)
     * create a mysql database using the schema in: **schema.sql**
     * populate the newly created database with the data in: **seeds.sql**
-    * create a connection.js file in the root folder with the following contents:
+    * create a connection.js file in the config folder with the following contents:
 
 ```
 var mysql = require("mysql");
+var connection;
 
-var connection = mysql.createConnection({
-    database: "burger_db",
-    host: "localhost",
-    port: 3306,
-    user: "<your_user>",
-    password: "<your_mysql_password>"
-});
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+        database: "burgers_db",
+        host: "localhost",
+        port: 3306,
+        user: "mike4747",
+        password: "<your password goes here>!"
+    });
+}
 
+connection.connect();
 module.exports = connection;
 ```
 
