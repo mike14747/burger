@@ -3,23 +3,43 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-    selectAll: function (cb) {
-        orm.selectAll(function (res) {
+    selectAll: (cb) => {
+        orm.selectAll((res) => {
             cb(res);
         });
     },
-    insertOne: function (table, cols, vals, cb) {
-        orm.insertOne(table, cols, vals, function (res) {
+    insertOne: (table, cols, vals, cb) => {
+        orm.insertOne(table, cols, vals, (res) => {
             cb(res);
         });
     },
-    updateOne: function (table, setVal, condition, cb) {
-        orm.updateOne(table, setVal, condition, function (res) {
+    updateOne: (table, setVal, condition, cb) => {
+        orm.updateOne(table, setVal, condition, (res) => {
             cb(res);
         });
     },
-    resetAll: function (table, setVal, cb) {
-        orm.resetAll(table, setVal, function (res) {
+    deleteOne: (table, condition, cb) => {
+        orm.deleteOne(table, condition, (res) => {
+            cb(res);
+        });
+    },
+    resetAll: (table, setVal, cb) => {
+        orm.resetAll(table, setVal, (res) => {
+            cb(res);
+        });
+    },
+    getPatties: (table, setVal, cb) => {
+        orm.getPatties(table, setVal, (res) => {
+            cb(res);
+        });
+    },
+    getBuns: (table, setVal, cb) => {
+        orm.getBuns(table, setVal, (res) => {
+            cb(res);
+        });
+    },
+    getToppings: (table, setVal, cb) => {
+        orm.getToppings(table, setVal, (res) => {
             cb(res);
         });
     }

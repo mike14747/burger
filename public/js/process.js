@@ -17,6 +17,17 @@ $(document).ready(function () {
         );
     });
 
+    $(".del-burger").on("click", function () {
+        var id = $(this).val();
+        $.ajax("/api/delete/" + id, {
+            type: "DELETE"
+        }).then(
+            function () {
+                location.reload();
+            }
+        );
+    });
+
     $("#order_burger").on("click", function () {
         // validate the form to make sure all fields were submitted
         event.preventDefault();
