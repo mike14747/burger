@@ -12,7 +12,7 @@ function printQuestionMarks(num) {
 
 var orm = {
     selectAll: (cb) => {
-        var queryString = "SELECT bg.id, p.patty, bn.bun, t.topping, bg.devoured FROM burgers AS bg INNER JOIN buns AS bn ON bg.bun_id=bn.bun_id INNER JOIN patties AS p ON bg.patty_id=p.patty_id INNER JOIN toppings AS t ON bg.topping_id=t.topping_id;";
+        var queryString = "SELECT bg.id, p.patty, bn.bun, t.topping, bg.devoured FROM burgers AS bg INNER JOIN buns AS bn ON bg.bun_id=bn.bun_id INNER JOIN patties AS p ON bg.patty_id=p.patty_id INNER JOIN toppings AS t ON bg.topping_id=t.topping_id ORDER BY bg.id ASC;";
         connection.query(queryString, (err, result) => {
             if (err) throw err;
             cb(result);
