@@ -22,7 +22,8 @@
 <div class="row">
     <div class="col-12 p-4 text-center">
         <h3>Build your Veggie Burger<span class="small">... pick a patty, a bun and toppings!</span></h3>
-        <h6 class="text-secondary">Add your own condiments / sauces at the condiment bar<span id="hidden_button">.</span></h6>
+        <h6 class="text-secondary">Add your own condiments / sauces at the condiment bar<span
+                id="hidden_button">.</span></h6>
     </div>
 </div>
 
@@ -32,88 +33,47 @@
             <div class="row m-0 p-0">
                 <div class="col-4 p-2">
                     <h6 class="text-danger font-weight-bolder">SELECT A PATTY:</h6>
+                    {{#each patties}}
                     <div class="form-check">
-                        <input id="patty1" class="form-check-input" type="radio" name="patty" value="1">
-                        <label class="form-check-label" for="patty1">
-                            Portobello
+                        <input id="patty{{patty_id}}" class="form-check-input" type="radio" name="patty" value="{{patty_id}}">
+                        <label class="form-check-label" for="patty{{patty_id}}">
+                            {{patty}}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input id="patty2" class="form-check-input" type="radio" name="patty" value="2">
-                        <label class="form-check-label" for="patty2">
-                            Black Bean
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input id="patty3" class="form-check-input" type="radio" name="patty" value="3">
-                        <label class="form-check-label" for="patty3">
-                            Aduki Bean
-                        </label>
-                    </div>
+                    {{/each}}
                     <span id="patty_error" class="invisible text-danger"><i
                             class="fas fa-exclamation-circle mr-2"></i>You must select a patty!</span>
                 </div>
                 <div class="col-4 p-2">
                     <h6 class="text-danger font-weight-bolder">SELECT A BUN:</h6>
+                    {{#each buns}}
                     <div class="form-check">
-                        <input id="bun1" class="form-check-input" type="radio" name="bun" value="1">
-                        <label class="form-check-label" for="bun1">
-                            Multigrain
+                        <input id="bun{{bun_id}}" class="form-check-input" type="radio" name="bun" value="{{bun_id}}">
+                        <label class="form-check-label" for="bun{{bun_id}}">
+                            {{bun}}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input id="bun2" class="form-check-input" type="radio" name="bun" value="2">
-                        <label class="form-check-label" for="bun2">
-                            Ciabatta
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input id="bun3" class="form-check-input" type="radio" name="bun" value="3">
-                        <label class="form-check-label" for="bun3">
-                            Kaiser
-                        </label>
-                    </div>
+                    {{/each}}
                     <span id="bun_error" class="invisible text-danger"><i class="fas fa-exclamation-circle mr-2"></i>You
                         must select a bun!</span>
                 </div>
                 <div class="col-4 p-2">
                     <h6 class="text-danger font-weight-bolder">SELECT TOPPINGS:</h6>
+                    {{#each toppings}}
                     <div class="form-check">
-                        <input id="topping1" type="radio" class="form-check-input" name="topping" value="1">
-                        <label class="form-check-label" for="topping1">
-                            Lettuce, Tomato and Onion
+                        <input id="topping{{topping_id}}" type="radio" class="form-check-input" name="topping" value="{{topping_id}}">
+                        <label class="form-check-label" for="topping{{topping_id}}">
+                            {{topping}}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input id="topping2" type="radio" class="form-check-input" name="topping" value="2">
-                        <label class="form-check-label" for="topping2">
-                            Lettuce, Tomato and Avocado
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input id="topping3" type="radio" class="form-check-input" name="topping" value="3">
-                        <label class="form-check-label" for="topping3">
-                            Tomato and Avocado
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input id="topping4" type="radio" class="form-check-input" name="topping" value="4">
-                        <label class="form-check-label" for="topping4">
-                            Mushroom and Onion
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input id="topping5" type="radio" class="form-check-input" name="topping" value="5">
-                        <label class="form-check-label" for="topping5">
-                            None
-                        </label>
-                    </div>
+                    {{/each}}
                     <span id="topping_error" class="invisible text-danger"><i
                             class="fas fa-exclamation-circle mr-2"></i>You must select toppings!</span>
                 </div>
             </div>
             <div class="col-12 p-4 text-center">
-                <button id="order_burger" type="submit" class="btn btn-primary"><i class="fas fa-hamburger mr-2"></i>Order Burger</button>
+                <button id="order_burger" type="submit" class="btn btn-primary"><i
+                        class="fas fa-hamburger mr-2"></i>Order Burger</button>
             </div>
         </form>
     </div>
@@ -128,8 +88,9 @@
             <div class="col align-self-center">
                 {{id}}. {{patty}} burger on a {{bun}} bun with {{topping}}
             </div>
-            <div class="col text-center align-self-center">
-                <button type="submit" class="dev-burger btn-sm btn-info my-3" value="{{id}}"><i class="fas fa-hamburger mr-2"></i>Devour Burger</button>
+            <div class="col-lg-auto text-center align-self-center">
+                <button type="submit" class="dev-burger btn-sm btn-info my-3" value="{{id}}"><i
+                        class="fas fa-hamburger mr-2"></i>Devour Burger</button>
             </div>
         </div>
         {{/unless}}
@@ -142,6 +103,10 @@
         <div class="row my-2 p-2 border">
             <div class="col align-self-center text-muted font-weight-lighter">
                 {{id}}. {{patty}} burger on a {{bun}} bun with {{topping}}
+            </div>
+            <div class="col-lg-auto text-center align-self-center">
+                <button type="submit" class="del-burger btn-sm btn-danger my-3" value="{{id}}"><i
+                        class="fas fa-trash-alt mr-2"></i>Delete</button>
             </div>
         </div>
         {{/if}}
