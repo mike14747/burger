@@ -1,6 +1,8 @@
 var mysql = require("mysql");
 var connection;
 
+var pwd = require("./pwd.js");
+
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -9,7 +11,7 @@ if (process.env.JAWSDB_URL) {
         host: "localhost",
         port: 3306,
         user: "mike4747",
-        password: "your_password"
+        password: "pwd"
     });
 }
 
