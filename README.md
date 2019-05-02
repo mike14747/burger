@@ -25,26 +25,12 @@ To use this project, you'll need to do the following:
     * run 'npm i' from the terminal (this will install the npm modules: express, mysql and express-handlebars)
     * create a mysql database using the schema in: **schema.sql**
     * populate the newly created database with the data in: **seeds.sql**
-    * create a connection.js file in the config folder with the following contents:
+    * create a config/pwd.js file with the following contents (since this was excluded from being sent to guthub in the .gitignore file):
 
 ```
-var mysql = require("mysql");
-var connection;
+var pwd = "your_password";
 
-if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-    connection = mysql.createConnection({
-        database: "<your db name goes here>",
-        host: "localhost",
-        port: 3306,
-        user: "<your username goes here>",
-        password: "<your password goes here>"
-    });
-}
-
-connection.connect();
-module.exports = connection;
+module.exports = pwd;
 ```
 
 ---
