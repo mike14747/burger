@@ -82,7 +82,7 @@ Interesting notes about the code in this project:
   * buns (whose contents are used to dynamically create the list of buns when placing an order)
   * toppings (whose contents are used to dynamically create the list of toppings when placing an order)
 * On the main homepage route, 4 queries are performed.
-  * One to list all the burgers on the page in both the 'Uneaten' and 'Devoured' areas.
+  * One to list all the burgers on the page in both the 'Uneaten' and 'Devoured' areas (with the snippet shown below):
 
 ```
 SELECT bg.id, p.patty, bn.bun, t.topping, bg.devoured 
@@ -92,6 +92,7 @@ INNER JOIN patties AS p ON bg.patty_id=p.patty_id
 INNER JOIN toppings AS t ON bg.topping_id=t.topping_id 
 ORDER BY bg.id ASC
 ```
+
 Handlebars (in the index.handlebars file) is then used to determine which group each burger is placed in.
 ```
 {{#each burgers}}
