@@ -28,18 +28,18 @@ var burger = {
             cb(res);
         });
     },
-    getPatties: (table, setVal, cb) => {
-        orm.getPatties(table, setVal, (res) => {
+    getPatties: (cb) => {
+        orm.getPatties((res) => {
             cb(res);
         });
     },
-    getBuns: (table, setVal, cb) => {
-        orm.getBuns(table, setVal, (res) => {
+    getBuns: (cb) => {
+        orm.getBuns((res) => {
             cb(res);
         });
     },
-    getToppings: (table, setVal, cb) => {
-        orm.getToppings(table, setVal, (res) => {
+    getToppings: (cb) => {
+        orm.getToppings((res) => {
             cb(res);
         });
     }

@@ -60,6 +60,21 @@ module.exports = connection;
   * server.js sets up the server, ties everything together and uses handlebars to render the html to the browser.
   * public/js/process.js validates all user input, then performs the appropriate AJAX calls based upon user input. These AJAX calls are looped back into controllers/burgers_controller.js for processing.
 
+User input validation is handled by 'public/js/process.js' as follows:
+* Each group is checked to make sure one radio button from each is checked by using the ':checked' pseudo class:
+```
+if ($("[name='patty']:checked").length === 0) {
+    errors = true;
+    errorArray.push("You must select a patty!");
+    $("#patty_error").removeClass("invisible");
+} else {
+    $("#patty_error").addClass("invisible");
+}
+```
+* If any of the 3 groups doesn't have a radio button checked:
+  * the error modal appears informing the user of the group or groups that weren't selected
+  * the group missing a selection has an error message displayed under it
+
 Interesting notes about the code in this project:
 * The database contains 4 tables.
   * burgers (which is just a collection of foreign keys of the other 3 tables)
@@ -87,8 +102,8 @@ and
 {{#each burgers}}
 {{#if devoured}}
 ```
-  * The next 3 queries are one each to populate the patties, buns and toppings sections of the burger ordering area.
-  * Each of those queries is then rendered into the browser via index.handlebars using handlebars 'partials' for each of patties, buns and toppings like this:
+  * The next 3 queries are used to populate the patties, buns and toppings sections of the burger ordering area.
+  * Each of those queries is then rendered into the browser via index.handlebars using handlebars 'partials' for each of patties, buns and toppings like this snippet from 'index.handlbars':
 ```
 {{#each patties}}
 {{> patties}}
