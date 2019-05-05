@@ -2,7 +2,7 @@
 
 ## What the project does:
 
-* This project allows users, to place custom veggie burger orders by picking one things from each of the following categories:
+* This project allows users, to place custom veggie burger orders by picking one thing from each of the following categories:
   * Patty type
   * Bun type
   * Topping group
@@ -38,7 +38,7 @@ module.exports = pwd;
 ## About the code in this project:
 
 *  This project is a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM, following the MVC design pattern.
-*  It use Node (including Express) and MySQL to query and route data and Express-Handlebars to generate your HTML.
+*  It uses Node (including Express) and MySQL to query and route data and Express-Handlebars to generate your HTML.
   * config/connections.js: handles the MySQL connection, then exports that connection to config/orm.js.
   * config/orm.js includes an object that contains all 8 MYSQL queries needed for the different parts of this project. This object is then exported to models/burger.js.
   * models/burger.js calls the ORM object's functions using burger specific user input. All this is done inside a burgers object which is exported to: controllers/burgers_controller.js.
